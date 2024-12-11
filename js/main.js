@@ -1,18 +1,11 @@
-// Data for spells and elixirs
-const spells = [
-  { name: "Expelliarmus", description: "Disarming charm, used to disarm an opponent." },
-  { name: "Lumos", description: "Charm that produces light at the tip of the wand." },
-  { name: "Accio", description: "Summoning charm, used to bring objects to the caster." },
-  { name: "Wingardium Leviosa", description: "Levitation charm, used to lift objects." },
-  { name: "Expecto Patronum", description: "Charm to summon a Patronus to protect from Dementors." }
+//APIs
+const spellsAPI = "https://hp-api.herokuapp.com/api/spells";
+const elixirsAPI = [
+    "https://wizard-world-api.herokuapp.com/Elixirs?Difficulty=Beginner",
+    "https://wizard-world-api.herokuapp.com/Elixirs?Difficulty=Moderate",
+    "https://wizard-world-api.herokuapp.com/Elixirs?Difficulty=Advanced"
 ];
-
-const elixirs = [
-  { name: "Felix Felicis", description: "Liquid luck; causes the drinker to experience good luck." },
-  { name: "Amortentia", description: "The most powerful love potion in the world." },
-  { name: "Veritaserum", description: "Truth serum that compels the drinker to speak the truth." },
-  { name: "Polyjuice Potion", description: "Potion that allows the drinker to take on the appearance of someone else." }
-];
+const charactersAPI = "https://hp-api.herokuapp.com/api/characters";
 
 // Current favorites
 let favorites = [];
