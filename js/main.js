@@ -7,8 +7,12 @@ const elixirsAPI = [
 ];
 const charactersAPI = "https://hp-api.herokuapp.com/api/characters";
 
-// Current favorites
-let favorites = [];
+// Store favorites in localStorage
+let favorites = JSON.parse(localStorage.getItem("favorites")) || {
+  spells: [],
+  elixirs: [],
+  characters: []
+};
 
 // Function to show the Spells section
 function showSpells() {
