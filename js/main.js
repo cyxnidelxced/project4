@@ -48,31 +48,45 @@ async function showSpells() {
   }
 }
 
-// Function to show the Elixirs section
-function showElixirs() {
-document.getElementById('spells-section').style.display = 'none';
-document.getElementById('elixirs-section').style.display = 'block';
-document.getElementById('spells-btn').classList.remove('active');
-document.getElementById('elixirs-btn').classList.add('active');
-displayElixirs(); // Populate elixirs dynamically
+// Show Elixirs
+async function showElixirs() {
+  try {
+      let allElixirs = [];
+      for (let api of elixirsAPI) {
+          const response = await fetch(api);
+          if (!response.ok) {  // Check if response is successful
+              throw new Error(`Error: ${response.status} ${response.statusText}`);
+          }
+          const elixirs = await response.json();
+          allElixirs = [...allElixirs, ...elixirs];
+      }
+      const container = document.getElementById("elixirs-container");
+      container.innerHTML = "";
+
+      allElixirs.forEach(elixir => {
+          const card = document.createElement("div");
+          card.className = "elixir-card";
+          card.innerHTML = `
+              <h3>${elixir.name}</h3>
+              <p>Difficulty: ${elixir.difficulty}</p>
+              <p>Ingredients: ${elixir.ingredients.length > 0 ? elixir.ingredients.map(ingredient => ingredient.name).join(", ") : "N/A"}</p>
+              <button class="favorite-btn ${favorites.elixirs.includes(elixir.name) ? "liked" : ""}" onclick="toggleFavorite('elixirs', '${elixir.name}')">♡</button>
+          `;
+          container.appendChild(card);
+      });
+
+      document.getElementById("spells-section").style.display = "none";
+      document.getElementById("elixirs-section").style.display = "block";
+      document.getElementById("characters-section").style.display = "none";
+
+      updateFavoritesDropdown();  // Update dropdown when a new section is shown
+
+  } catch (error) {
+      console.error("Failed to fetch elixirs:", error);
+      alert("Sorry, there was an error loading the elixirs. Please try again later.");
+  }
 }
 
-// Function to display elixirs dynamically
-function displayElixirs() {
-const container = document.getElementById('elixirs-container');
-container.innerHTML = ''; // Clear the container before adding new items
-
-elixirs.forEach((elixir, index) => {
-  const card = document.createElement('div');
-  card.classList.add('elixir-card');
-  card.innerHTML = `
-    <h3>${elixir.name}</h3>
-    <p>${elixir.description}</p>
-    <button class="favorite-btn" onclick="toggleFavorite(${index}, 'elixir')">&#9825;</button>
-  `;
-  container.appendChild(card);
-});
-}
 
 // Function to toggle favorite status
 function toggleFavorite(index, type) {
