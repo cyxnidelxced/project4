@@ -14,13 +14,38 @@ let favorites = JSON.parse(localStorage.getItem("favorites")) || {
   characters: []
 };
 
-// Function to show the Spells section
-function showSpells() {
-document.getElementById('spells-section').style.display = 'block';
-document.getElementById('elixirs-section').style.display = 'none';
-document.getElementById('spells-btn').classList.add('active');
-document.getElementById('elixirs-btn').classList.remove('active');
-displaySpells(); // Populate spells dynamically
+// Show Spells
+async function showSpells() {
+  try {
+      const response = await fetch(spellsAPI);
+      if (!response.ok) {  // Check if response is successful (status code 200-299)
+          throw new Error(`Error: ${response.status} ${response.statusText}`);
+      }
+      const spells = await response.json();
+      const container = document.getElementById("spells-container");
+      container.innerHTML = "";
+
+      spells.forEach(spell => {
+          const card = document.createElement("div");
+          card.className = "spell-card";
+          card.innerHTML = `
+              <h3>${spell.name}</h3>
+              <p>${spell.description || "No description available"}</p>
+              <button class="favorite-btn ${favorites.spells.includes(spell.name) ? "liked" : ""}" onclick="toggleFavorite('spells', '${spell.name}')">♡</button>
+          `;
+          container.appendChild(card);
+      });
+
+      document.getElementById("spells-section").style.display = "block";
+      document.getElementById("elixirs-section").style.display = "none";
+      document.getElementById("characters-section").style.display = "none";
+
+      updateFavoritesDropdown();  // Update dropdown when a new section is shown
+
+  } catch (error) {
+      console.error("Failed to fetch spells:", error);
+      alert("Sorry, there was an error loading the spells. Please try again later.");
+  }
 }
 
 // Function to show the Elixirs section
@@ -30,23 +55,6 @@ document.getElementById('elixirs-section').style.display = 'block';
 document.getElementById('spells-btn').classList.remove('active');
 document.getElementById('elixirs-btn').classList.add('active');
 displayElixirs(); // Populate elixirs dynamically
-}
-
-// Function to display spells dynamically
-function displaySpells() {
-const container = document.getElementById('spells-container');
-container.innerHTML = ''; // Clear the container before adding new items
-
-spells.forEach((spell, index) => {
-  const card = document.createElement('div');
-  card.classList.add('spell-card');
-  card.innerHTML = `
-    <h3>${spell.name}</h3>
-    <p>${spell.description}</p>
-    <button class="favorite-btn" onclick="toggleFavorite(${index}, 'spell')">&#9825;</button>
-  `;
-  container.appendChild(card);
-});
 }
 
 // Function to display elixirs dynamically
