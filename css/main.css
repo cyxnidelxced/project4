@@ -28,3 +28,31 @@ header {
   position: relative;
   z-index: 1;
 }
+
+nav {
+  margin-top: 20px;
+  z-index: 2;
+}
+
+nav button {
+  font-size: 18px;
+  padding: 12px 24px;
+  margin: 10px;
+  background-color: #8e44ad; /* Purple magic */
+  color: white;
+  border: 2px solid #f39c12; /* Gold border */
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  font-family: 'Cinzel', serif;
+}
+
+nav button:hover {
+  background-color: #9b59b6; /* Lighter purple */
+  box-shadow: 0 0 15px 3px rgba(255, 215, 0, 0.8); /* Glowing effect */
+  transform: scale(1.1);
+}
+
+nav button.active {
+  background-color: #9b59b6;
+}
