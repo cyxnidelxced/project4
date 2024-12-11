@@ -7,11 +7,15 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+  
   <header>
     <h1>Harry Potter Encyclopedia</h1>
+    
     <nav>
         <button id="spells-btn" onclick="showSpells()">Spells</button>
         <button id="elixirs-btn" onclick="showElixirs()">Elixirs</button>
+        <button id="characters-btn" onclick="showCharacters()">Characters</button>
+    
     </nav>
   </header>
 
@@ -25,11 +29,17 @@
         <h2 class="section-heading">Wizard Elixirs</h2>
         <div id="elixirs-container"></div>
     </section>
+
+    <section id="characters-section" class="content-section">
+      <h2 class="section-heading">Harry Potter Characters</h2>
+      <div id="characters-container"></div>
+    </section>
   </main>
 
   <!-- Favorites Button -->
   <div id="favorites-btn-container">
     <button id="favorites-btn" onclick="toggleFavoritesDropdown()">❤️</button>
+      
     <div id="favorites-dropdown" class="dropdown-content">
         <h3>Your Favorites</h3>
         <ul id="favorites-list"></ul>
