@@ -29,6 +29,13 @@ header {
   z-index: 1;
 }
 
+header h1 {
+  font-size: 48px;
+  color: #f39c12;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.7); /* Glowing effect */
+}
+
+
 nav {
   margin-top: 20px;
   z-index: 2;
