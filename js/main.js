@@ -124,57 +124,65 @@ async function showCharacters() {
   }
 }
 
-// Function to toggle favorite status
-function toggleFavorite(index, type) {
-const isSpell = type === 'spell';
-const item = isSpell ? spells[index] : elixirs[index];
-const heartButton = event.target;
+// Toggle Favorite
+function toggleFavorite(type, name) {
+  const index = favorites[type].indexOf(name);
+  if (index === -1) {
+      favorites[type].push(name);
+  } else {
+      favorites[type].splice(index, 1);
+  }
+  localStorage.setItem("favorites", JSON.stringify(favorites));
 
-// Check if item is already in favorites
-const itemIndex = favorites.findIndex(fav => fav.type === type && fav.index === index);
+  // Update the heart icon immediately
+  const heartBtn = document.querySelector(`button[onclick="toggleFavorite('${type}', '${name}')"]`);
+  heartBtn.classList.toggle("liked", favorites[type].includes(name));
 
-if (itemIndex > -1) {
-  // Item already in favorites, remove it
-  favorites.splice(itemIndex, 1);
-  heartButton.classList.remove('liked');
-} else {
-  // Add item to favorites
-  favorites.push({ type, index });
-  heartButton.classList.add('liked');
+  updateFavoritesDropdown();  // Update dropdown whenever favorites are toggled
 }
 
-// Update favorites list dropdown
-updateFavoritesDropdown();
-}
-
-// Function to update the favorites dropdown list
+// Show and update Favorites Dropdown
 function updateFavoritesDropdown() {
-const favoritesList = document.getElementById('favorites-list');
-favoritesList.innerHTML = ''; // Clear the list
+  const favoritesList = document.getElementById("favorites-list");
+  favoritesList.innerHTML = "";
 
-favorites.forEach(fav => {
-  const item = fav.type === 'spell' ? spells[fav.index] : elixirs[fav.index];
-  const listItem = document.createElement('li');
-  listItem.textContent = item.name;
-  favoritesList.appendChild(listItem);
-});
+  for (const type of ["spells", "elixirs", "characters"]) {
+      favorites[type].forEach(item => {
+          const li = document.createElement("li");
+          li.textContent = item;
+          favoritesList.appendChild(li);
+      });
+  }
 }
 
-// Toggle the favorites dropdown
+// Toggle Favorites Dropdown visibility
 function toggleFavoritesDropdown() {
-const dropdown = document.getElementById('favorites-dropdown');
-dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+  const dropdown = document.getElementById("favorites-dropdown");
+  dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
 }
 
-// Clear all favorites and reset heart icons
+// Clear All Favorites
 function clearFavorites() {
-favorites = [];
-updateFavoritesDropdown(); // Update the dropdown
-const heartButtons = document.querySelectorAll('.favorite-btn');
-heartButtons.forEach(button => button.classList.remove('liked')); // Reset all hearts
+  // Clear favorites from localStorage
+  localStorage.removeItem("favorites");
+  
+  // Reset favorites in memory
+  favorites.spells = [];
+  favorites.elixirs = [];
+  favorites.characters = [];
+
+  // Reset heart icons to unfilled state
+  const allFavoriteButtons = document.querySelectorAll('.favorite-btn');
+  allFavoriteButtons.forEach(button => {
+      button.classList.remove("liked"); // Remove "liked" class (red heart)
+  });
+
+  // Update the favorites dropdown
+  updateFavoritesDropdown();
 }
 
-// Initialize the page by showing the spells by default
+// Set default section
 window.onload = function() {
-showSpells(); // Default to showing spells
-};
+  showSpells();
+  updateFavoritesDropdown();  // Ensure dropdown is populated on page load
+}
