@@ -121,5 +121,25 @@ nav button.active {
   border: 2px solid #f39c12;
 }
 
+.spell-card:hover, .elixir-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+}
+
+.spell-card h3, .elixir-card h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #f39c12;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.spell-card p, .elixir-card p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
 
 
