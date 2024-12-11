@@ -87,6 +87,42 @@ async function showElixirs() {
   }
 }
 
+// Show Characters
+async function showCharacters() {
+  try {
+      const response = await fetch(charactersAPI);
+      if (!response.ok) {  // Check if response is successful
+          throw new Error(`Error: ${response.status} ${response.statusText}`);
+      }
+      const characters = await response.json();
+      const container = document.getElementById("characters-container");
+      container.innerHTML = "";
+
+      characters.forEach(character => {
+          const card = document.createElement("div");
+          card.className = "character-card";
+          card.innerHTML = `
+              <h3>${character.name}</h3>
+              <p>Gender: ${character.gender}</p>
+              <p>Birth: ${character.dateOfBirth}</p>
+              <p>Ancestry: ${character.ancestry}</p>
+              <p>Wand: ${character.wand.wood} (${character.wand.core})</p>
+              <button class="favorite-btn ${favorites.characters.includes(character.name) ? "liked" : ""}" onclick="toggleFavorite('characters', '${character.name}')">♡</button>
+          `;
+          container.appendChild(card);
+      });
+
+      document.getElementById("spells-section").style.display = "none";
+      document.getElementById("elixirs-section").style.display = "none";
+      document.getElementById("characters-section").style.display = "block";
+
+      updateFavoritesDropdown();  // Update dropdown when a new section is shown
+
+  } catch (error) {
+      console.error("Failed to fetch characters:", error);
+      alert("Sorry, there was an error loading the characters. Please try again later.");
+  }
+}
 
 // Function to toggle favorite status
 function toggleFavorite(index, type) {
