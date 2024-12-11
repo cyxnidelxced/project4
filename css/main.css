@@ -102,7 +102,7 @@ nav button.active {
 }
 
 /* Card container */
-#spells-container, #elixirs-container {
+#spells-container, #elixirs-container, #characters-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
