@@ -110,8 +110,8 @@ nav button.active {
   margin-top: 20px;
 }
 
-/* Spell and Elixir card styling */
-.spell-card, .elixir-card {
+/* Spell, Elixir, and Character card styling */
+.spell-card, .elixir-card, .character-card{
   background-color: #34495e;
   color: #ecf0f1;
   border-radius: 12px;
