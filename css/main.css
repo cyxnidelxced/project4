@@ -219,3 +219,211 @@ nav button.active {
 #favorites-dropdown button:hover {
   background-color: #c0392b;
 }
+
+/* Media Queries */
+@media (min-width: 1440px) and (max-width: 1920px) {
+  header h1 {
+    font-size: 52px;
+  }
+
+  nav button {
+    font-size: 20px;
+    padding: 14px 28px;
+  }
+
+  .spell-card, .elixir-card, .character-card {
+    width: 280px;
+    padding: 25px;
+  }
+
+  .section-heading {
+    font-size: 40px;
+  }
+
+  #spells-container, #elixirs-container, #characters-container {
+    gap: 30px;
+  }
+}
+
+/* Large Screens / Desktops */
+@media (min-width: 1025px) and (max-width: 1439px) {
+  header h1 {
+    font-size: 42px;
+  }
+
+  nav button {
+    font-size: 18px;
+    padding: 12px 24px;
+  }
+
+  .spell-card, .elixir-card, .character-card {
+    width: 250px;
+    padding: 20px;
+  }
+
+  .section-heading {
+    font-size: 36px;
+  }
+}
+
+/* Existing Tablet Devices */
+@media (max-width: 1024px) {
+  header h1 {
+    font-size: 36px;
+  }
+
+  nav button {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+
+  .spell-card, .elixir-card, .character-card {
+    width: 220px;
+    padding: 15px;
+  }
+
+  .section-heading {
+    font-size: 28px;
+  }
+}
+
+/* Existing Mobile Devices */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 30px;
+  }
+
+  nav button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .spell-card, .elixir-card, .character-card {
+    width: 180px;
+    padding: 12px;
+  }
+
+  .section-heading {
+    font-size: 24px;
+  }
+
+  #favorites-btn {
+    font-size: 20px;
+    padding: 10px;
+  }
+
+  #favorites-dropdown {
+    width: 200px;
+  }
+
+  /* Added navigation adjustments for smaller mobile */
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav button {
+    margin: 5px 0;
+    width: 90%;
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 26px;
+  }
+
+  nav button {
+    font-size: 12px;
+    padding: 6px 12px;
+    width: 80%;
+  }
+
+  .spell-card, .elixir-card, .character-card {
+    width: 150px;
+    padding: 10px;
+  }
+
+  .section-heading {
+    font-size: 22px;
+  }
+
+  #favorites-btn {
+    font-size: 18px;
+    padding: 8px;
+  }
+
+  #favorites-dropdown {
+    width: 180px;
+    right: 10px; /* Adjust dropdown positioning */
+  }
+
+  /* Further reduce card details */
+  .spell-card p, .elixir-card p, .character-card p {
+    font-size: 14px;
+  }
+}
+
+/* Extra Small Mobile Devices */
+@media (max-width: 320px) {
+  header h1 {
+    font-size: 22px;
+    letter-spacing: 1px;
+  }
+
+  nav button {
+    font-size: 10px;
+    padding: 4px 8px;
+    width: 70%;
+  }
+
+  .spell-card, .elixir-card, .character-card {
+    width: 120px;
+    padding: 8px;
+  }
+
+  .section-heading {
+    font-size: 20px;
+  }
+
+  .spell-card p, .elixir-card p, .character-card p {
+    font-size: 12px;
+  }
+
+  #favorites-btn {
+    font-size: 16px;
+    padding: 6px;
+  }
+
+  #favorites-dropdown {
+    width: 160px;
+    right: 5px;
+    padding: 10px;
+  }
+}
+
+/* Landscape Orientation for Mobile Devices */
+@media (max-width: 900px) and (orientation: landscape) {
+  body {
+    overflow-y: auto;
+  }
+
+  .content-section {
+    padding-bottom: 100px; /* Extra padding for landscape mode */
+  }
+
+  #spells-container, #elixirs-container, #characters-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  .spell-card, .elixir-card, .character-card {
+    width: 200px;
+    margin: 10px;
+  }
+}
+
