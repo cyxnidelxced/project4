@@ -149,6 +149,9 @@ nav button.active {
   text-transform: uppercase;
   letter-spacing: 1px;
   text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
 }
 
 .spell-card p, .elixir-card p, .character-card p {
