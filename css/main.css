@@ -102,7 +102,7 @@ nav button.active {
   text-align: center;
   font-size: 36px;
   font-weight: bold;
-  color: #f39c12;
+  color: #ffbd54;
   text-transform: uppercase;
   letter-spacing: 2px;
   text-shadow: 0 0 15px rgba(255, 215, 0, 0.8); 
@@ -142,7 +142,7 @@ nav button.active {
   font-size: 22px;
   font-weight: 700;
   margin-bottom: 15px;
-  color: #f39c12;
+  color: #ffb742;
   text-transform: uppercase;
   letter-spacing: 1px;
   text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
