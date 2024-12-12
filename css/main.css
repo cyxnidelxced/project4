@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Calligraffitti&family=Cinzel:wght@400..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Calligraffitti&family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Modern+Antiqua&display=swap');
 
 body {
   font-family: "Calligraffitti", cursive;
@@ -129,7 +130,9 @@ nav button.active {
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
-  font-family: 'Garamond', serif;
+  font-family: "Modern Antiqua", serif;
+  font-weight: 400;
+  font-style: normal;
   border: 2px solid #f39c12;
 }
 
